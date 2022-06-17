@@ -1,0 +1,24 @@
+version: '2.4'
+
+services:
+    php:
+        image: symfony-road-runner-template:dev
+        container_name: symfony-road-runner-template
+        restart: "no"
+        build:
+            context: .
+            target: dev
+            dockerfile: ./Dockerfile
+        environment:
+            - APP_ENV=dev
+            - APP_SECRET=scotland-likes-unicorns
+        volumes:
+            - './:/app:cached'
+            # Dont share these into the container
+            - '/app/var/cache'
+            - '/app/var/logs'
+            # SSH/Composer within the container
+            - '~/.ssh:/root/.ssh:ro'
+            - '~/.composer/:/root/.composer/'
+        ports:
+            - '80:8080'

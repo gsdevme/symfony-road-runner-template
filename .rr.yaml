@@ -1,0 +1,9 @@
+version: "2.7"
+server:
+    exec_timeout: 10s
+    command: "php public/index.php"
+    env:
+        APP_RUNTIME: Runtime\RoadRunnerSymfonyNyholm\Runtime
+http:
+    address: 0.0.0.0:8080
+    access_logs: false

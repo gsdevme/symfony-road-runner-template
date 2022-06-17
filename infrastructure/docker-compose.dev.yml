@@ -4,7 +4,6 @@ services:
     php:
         image: symfony-road-runner-template:dev
         container_name: symfony-road-runner-template
-        restart: "no"
         build:
             context: .
             target: dev

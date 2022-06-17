@@ -19,10 +19,10 @@ shell:
 	docker-compose -f infrastructure/docker-compose.dev.yml --project-directory $(CURDIR) exec php bash
 
 style:
-	${CMD_EXEC} vendor/bin/phpcs --standard=PSR12 src/
+	${CMD_EXEC} vendor/bin/phpcs
 
 fmt:
-	${CMD_EXEC} vendor/bin/phpcbf --standard=PSR12 src/
+	${CMD_EXEC} vendor/bin/phpcbf
 
 phpstan:
 	${CMD_EXEC} vendor/bin/phpstan analyze

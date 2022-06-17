@@ -30,13 +30,29 @@ FROM base as dev
 
 CMD ["rr", "serve", "-c", ".rr.dev.yaml"]
 
-FROM base as test
+FROM base as build
 
-RUN make style && make phpstan
+COPY . .
 
-FROM test as prod
+RUN mkdir -p /app/var && chown -R www-data:www-data /app/
+
+RUN composer install --no-interaction --no-scripts --no-suggest --no-progress
+
+FROM build as ci
+
+RUN make style && \
+    make phpstan && \
+    bin/console lint:container && \
+    bin/console lint:yaml config
+
+FROM base as prod
 
 ENV APP_ENV=prod
 ENV APP_DEBUG=0
 
+COPY --from=build /app/ /app/
 
+RUN composer dump-autoload --no-dev --classmap-authoritative && \
+    chown -R www-data:www-data /app/
+
+USER www-data

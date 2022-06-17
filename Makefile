@@ -12,6 +12,9 @@ build:
 start:
 	docker-compose -f infrastructure/docker-compose.dev.yml --project-directory $(CURDIR) up -d
 
+start-prod:
+	docker-compose -f infrastructure/docker-compose.dev.yml --project-directory $(CURDIR) up -d
+
 stop:
 	docker-compose -f infrastructure/docker-compose.dev.yml --project-directory $(CURDIR) down --remove-orphans
 

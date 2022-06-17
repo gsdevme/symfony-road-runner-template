@@ -46,6 +46,7 @@ FROM build as ci
 
 RUN make style && \
     make phpstan && \
+    make phpunit && \
     bin/console lint:container && \
     bin/console lint:yaml config
 

@@ -9,7 +9,6 @@ services:
             target: dev
             dockerfile: ./Dockerfile
         environment:
-            - APP_ENV=dev
             - APP_SECRET=scotland-likes-unicorns
         volumes:
             - './:/app:cached'

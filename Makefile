@@ -27,6 +27,9 @@ fmt:
 phpstan:
 	${CMD_EXEC} vendor/bin/phpstan analyze
 
+phpunit:
+	${CMD_EXEC} vendor/bin/phpunit
+
 install:
 	docker run -it --rm -v $(echo "$HOME/.composer"):/tmp -v $(CURDIR):/app composer:2 install --ignore-platform-req=ext-sockets
 

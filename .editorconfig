@@ -1,4 +1,9 @@
-[.github/workflows/build.yaml]
+[.github/workflows/*.yaml]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+
+[*.neon]
 indent_style = space
 indent_size = 2
 insert_final_newline = true
